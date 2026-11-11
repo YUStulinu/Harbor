@@ -1,0 +1,8 @@
+bin/
+registry/target/
+web/node_modules/
+web/dist/
+__pycache__/
+*.pyc
+.pytest_cache/
+results/*.log

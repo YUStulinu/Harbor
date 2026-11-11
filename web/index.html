@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harbor</title>
+  </head>
+  <body>
+    <header>
+      <h1>Harbor</h1>
+      <span id="host" class="muted"></span>
+      <span id="status" class="muted right"></span>
+    </header>
+    <div id="offline" class="offline" hidden>Cannot reach the Harbor API. Start it in Linux with <code>sudo harbor serve --web web/dist</code>.</div>
+    <main>
+      <aside>
+        <form id="run" class="panel">
+          <h3>Run a container</h3>
+          <label>image <input name="image" list="images" placeholder="alpine:3.20" required /></label>
+          <datalist id="images"></datalist>
+          <label>command <input name="args" placeholder="sh -c 'echo hi; sleep 600'" /></label>
+          <div class="grid">
+            <label>name <input name="name" placeholder="auto" /></label>
+            <label>network <select name="net"><option>bridge</option><option>none</option><option>host</option></select></label>
+            <label>memory <input name="memory" placeholder="64m" /></label>
+            <label>CPUs <input name="cpus" type="number" step="0.1" min="0" placeholder="1.5" /></label>
+            <label>max processes <input name="pids" type="number" min="0" placeholder="100" /></label>
+          </div>
+          <button type="submit">Run</button>
+          <p id="runerr" class="err"></p>
+        </form>
+        <div id="list" class="list"></div>
+      </aside>
+      <section id="detail"></section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

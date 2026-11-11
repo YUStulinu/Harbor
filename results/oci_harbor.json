@@ -1,0 +1,784 @@
+{
+ "summary": {
+  "runtime": "harbor",
+  "programs": 58,
+  "programs_passed": 38,
+  "passed": 3653,
+  "failed": 72,
+  "skipped": 496,
+  "assertion_pass_rate": 98.1,
+  "program_pass_rate": 65.5
+ },
+ "tests": [
+  {
+   "test": "config_updates_without_affect",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "create",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "default",
+   "passed": 270,
+   "failed": 0,
+   "skipped": 39,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.08,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "delete",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 13.19,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "delete_only_create_resources",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.05,
+   "ok": false,
+   "failures": [],
+   "output_tail": "TAP version 13\nopen /sys/fs/cgroup/pids/cgrouptest/tasks: no such file or directory\n"
+  },
+  {
+   "test": "delete_resources",
+   "passed": 1,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.07,
+   "ok": false,
+   "failures": [
+    "find pids cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find pids cgroup\n# cgroupv2 is not supported yet\nok 2 - Deleting a container MUST delete the resources that were created during the `create` step\n  ---\n  {\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#delete\"\n  }\n  ...\n1..2\n"
+  },
+  {
+   "test": "hooks",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "hooks_stdin",
+   "passed": 3,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "hostname",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 2.13,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "kill",
+   "passed": 5,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 10.19,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "kill_no_effect",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "killsig",
+   "passed": 3,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.13,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_cgroups_blkio",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.06,
+   "ok": false,
+   "failures": [],
+   "output_tail": "TAP version 13\n1..0\nfailed to create the container\nharbor: cgroup io.weight = \"default 4950\": open /sys/fs/cgroup/cgrouptest/io.weight: permission denied\nClean: Delete:  exit status 1\nexit status 1\n"
+  },
+  {
+   "test": "linux_cgroups_cpus",
+   "passed": 0,
+   "failed": 16,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.04,
+   "ok": false,
+   "failures": [
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 2 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 3 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 4 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 5 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 6 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 7 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 8 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 9 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 10 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 11 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 12 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 13 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 14 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 15 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 16 - find cpu cgroup\n# cgroupv2 is not supported yet\n1..16\nTAP version 13\n1..0\n"
+  },
+  {
+   "test": "linux_cgroups_devices",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": false,
+   "failures": [
+    "find devices"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find devices\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_hugetlb",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": false,
+   "failures": [],
+   "output_tail": "TAP version 13\n1..0\ncgroupv2 is not supported yet\n"
+  },
+  {
+   "test": "linux_cgroups_memory",
+   "passed": 0,
+   "failed": 6,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.36,
+   "ok": false,
+   "failures": [
+    "find memory cgroup",
+    "find memory cgroup",
+    "find memory cgroup",
+    "find memory cgroup",
+    "find memory cgroup",
+    "find memory cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find memory cgroup\n# cgroupv2 is not supported yet\nnot ok 2 - find memory cgroup\n# cgroupv2 is not supported yet\nnot ok 3 - find memory cgroup\n# cgroupv2 is not supported yet\nnot ok 4 - find memory cgroup\n# cgroupv2 is not supported yet\nnot ok 5 - find memory cgroup\n# cgroupv2 is not supported yet\nnot ok 6 - find memory cgroup\n# cgroupv2 is not supported yet\n1..6\n"
+  },
+  {
+   "test": "linux_cgroups_network",
+   "passed": 0,
+   "failed": 32,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 2.07,
+   "ok": false,
+   "failures": [
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup"
+   ],
+   "output_tail": " is not supported yet\nnot ok 10 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 11 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 12 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 13 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 14 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 15 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 16 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 17 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 18 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 19 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 20 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 21 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 22 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 23 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 24 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 25 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 26 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 27 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 28 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 29 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 30 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 31 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 32 - find network cgroup\n# cgroupv2 is not supported yet\n1..32\n"
+  },
+  {
+   "test": "linux_cgroups_pids",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.08,
+   "ok": false,
+   "failures": [
+    "find pids cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find pids cgroup\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_relative_blkio",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.06,
+   "ok": false,
+   "failures": [
+    "exit status 1"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - exit status 1\n1..1\nfailed to create the container\nharbor: cgroup io.weight = \"default 4950\": open /sys/fs/cgroup/harbor/testdir/cgrouptest/container/io.weight: permission denied\nClean: Delete:  exit status 1\n"
+  },
+  {
+   "test": "linux_cgroups_relative_cpus",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": false,
+   "failures": [
+    "find cpus cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find cpus cgroup\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_relative_devices",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": false,
+   "failures": [
+    "find devices"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find devices\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_relative_hugetlb",
+   "passed": 0,
+   "failed": 2,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.18,
+   "ok": false,
+   "failures": [
+    "find hugetlb cgroup",
+    "find hugetlb cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find hugetlb cgroup\n# cgroupv2 is not supported yet\nnot ok 2 - find hugetlb cgroup\n# cgroupv2 is not supported yet\n1..2\n"
+  },
+  {
+   "test": "linux_cgroups_relative_memory",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.32,
+   "ok": false,
+   "failures": [
+    "find memory cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find memory cgroup\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_relative_network",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.23,
+   "ok": false,
+   "failures": [
+    "find network cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find network cgroup\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_relative_pids",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.25,
+   "ok": false,
+   "failures": [
+    "find pids cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find pids cgroup\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_devices",
+   "passed": 287,
+   "failed": 0,
+   "skipped": 40,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.13,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_masked_paths",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 4.36,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_mount_label",
+   "passed": 270,
+   "failed": 0,
+   "skipped": 38,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_ns_itype",
+   "passed": 7,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_ns_nopath",
+   "passed": 7,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_ns_path",
+   "passed": 5,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.32,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_ns_path_type",
+   "passed": 14,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.3,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_process_apparmor_profile",
+   "passed": 271,
+   "failed": 0,
+   "skipped": 38,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_readonly_paths",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 4.31,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_rootfs_propagation",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 3.25,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_seccomp",
+   "passed": 2,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.06,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_sysctl",
+   "passed": 271,
+   "failed": 0,
+   "skipped": 38,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_uid_mappings",
+   "passed": 274,
+   "failed": 0,
+   "skipped": 38,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "misc_props",
+   "passed": 2,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": false,
+   "failures": [
+    "implementations that are reading/processing this configuration file MUST NOT generate an error if they encounter an unknown annotation key"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - implementations that are reading/processing this configuration file MUST NOT generate an error if they encounter an unknown annotation key\n  ---\n  {\n    \"error\": \"exit status 1\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/config.md#annotations\",\n    \"stderr\": \"harbor: process.args[0] /runtimetest: stat /runtimetest: no such file or directory\\n\"\n  }\n  ...\nok 2 - runtimes that are reading or processing this configuration file MUST NOT generate an error if they encounter an unknown property\n  ---\n  {\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/config.md#extensibility\"\n  }\n  ...\nok 3 - runtimes that are reading or processing this configuration file MUST generate an error when invalid or unsupported values are encountered\n  ---\n  {\n    \"error\": \"exit status 1\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/config.md#valid-values\",\n    \"stderr\": \"harbor: config.json: unsupported ociVersion \\\"invalid\\\"\\n\"\n  }\n  ...\n1..3\nfailed to create the container\nharbor: process.args[0] /runtimetest: stat /runtimetest: no such file or directory\nfailed to create the container\nharbor: config.json: unsupported ociVersion \"invalid\"\n"
+  },
+  {
+   "test": "mounts",
+   "passed": 281,
+   "failed": 0,
+   "skipped": 39,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "pidfile",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 10.14,
+   "ok": false,
+   "failures": [
+    "create with '--pid-file' option works"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - create with '--pid-file' option works\n  ---\n  {\n    \"error\": \"exit status 1\",\n    \"stderr\": \"harbor: container ce072df3-8237-406b-988f-16dcfb543619 is not running\\n\"\n  }\n  ...\n1..1\n"
+  },
+  {
+   "test": "poststart",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "poststart_fail",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.08,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "poststop",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "poststop_fail",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.08,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "prestart",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.09,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "prestart_fail",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.06,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "process",
+   "passed": 272,
+   "failed": 0,
+   "skipped": 39,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.1,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "process_capabilities",
+   "passed": 270,
+   "failed": 0,
+   "skipped": 32,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "process_capabilities_fail",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.05,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "process_oom_score_adj",
+   "passed": 271,
+   "failed": 0,
+   "skipped": 38,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "process_rlimits",
+   "passed": 281,
+   "failed": 1,
+   "skipped": 39,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.08,
+   "ok": false,
+   "failures": [
+    "has expected soft RLIMIT_NOFILE"
+   ],
+   "output_tail": "es\"\n  }\n  ...\nok 297 # SKIP /dev/ptmx (default device) has unconfigured permissions\nok 298 # SKIP /dev/ptmx (default device) has an unconfigured user ID\nok 299 # SKIP /dev/ptmx (default device) has an unconfigured group ID\nok 300 # SKIP linux.devices is not set\nok 301 - has expected number of process arguments\n  ---\n  {\n    \"actual\": [\n      \"L3J1bnRpbWV0ZXN0\",\n      \"LS1wYXRoPS8=\"\n    ],\n    \"expected\": [\n      \"/runtimetest\",\n      \"--path=/\"\n    ]\n  }\n  ...\nok 302 - has expected process argument 0\n  ---\n  {\n    \"actual\": \"/runtimetest\",\n    \"expected\": \"/runtimetest\",\n    \"index\": 0\n  }\n  ...\nok 303 - has expected process argument 1\n  ---\n  {\n    \"actual\": \"--path=/\",\n    \"expected\": \"--path=/\",\n    \"index\": 1\n  }\n  ...\nok 304 - has expected noNewPrivileges\nok 305 # SKIP linux.maskedPaths not set\nok 306 # SKIP process.oomScoreAdj not set\nok 307 # SKIP syscall action SCMP_ACT_ALLOW\nok 308 # SKIP syscall action SCMP_ACT_ALLOW\nok 309 # SKIP syscall action SCMP_ACT_ALLOW\nok 310 # SKIP syscall action SCMP_ACT_ALLOW\nok 311 # SKIP syscall action SCMP_ACT_ALLOW\nok 312 # SKIP syscall action SCMP_ACT_ALLOW\nok 313 # SKIP syscall action SCMP_ACT_ALLOW\nok 314 # SKIP syscall action SCMP_ACT_ALLOW\nok 315 # SKIP linux.readonlyPaths not set\nok 316 # SKIP linux.rootfsPropagation not set\nok 317 # SKIP linux.sysctl not set\nok 318 # SKIP linux.uidMappings not set\nok 319 # SKIP linux.gidMappings not set\nok 320 # SKIP linux.mountlabel not set\nok 321 # SKIP process.ApparmorProfile not set\n1..321\n"
+  },
+  {
+   "test": "process_rlimits_fail",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.05,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "process_user",
+   "passed": 271,
+   "failed": 0,
+   "skipped": 39,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.09,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "root_readonly_true",
+   "passed": 271,
+   "failed": 0,
+   "skipped": 39,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.07,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "start",
+   "passed": 6,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.08,
+   "ok": false,
+   "failures": [
+    "exit status 1"
+   ],
+   "output_tail": "             ps | logs ID | stats ID | stop ID | rm [-f] ID\\nUI:           serve [--addr 127.0.0.1:8800] [--web DIR]\\n\"\n  }\n  ...\nok 2 - attempting to `start` a container that is not `created` MUST generate an error\n  ---\n  {\n    \"error\": \"exit status 1\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#start\",\n    \"stderr\": \"harbor: container 8cb65866-95ee-416c-9a0f-94e124ab04f0 does not exist\\n\"\n  }\n  ...\nok 3 - `process.args` MUST NOT be applied until triggered by the start operation\n  ---\n  {\n    \"error\": \"stat /tmp/ocitest241587454/output: no such file or directory\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#create\"\n  }\n  ...\nok 4 - `start` operation MUST run the user-specified program as specified by `process`\n  ---\n  {\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#start\"\n  }\n  ...\nok 5 - attempting to `start` a container that is not `created` MUST generate an error\n  ---\n  {\n    \"error\": \"exit status 1\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#start\",\n    \"stderr\": \"harbor: container 8cb65866-95ee-416c-9a0f-94e124ab04f0 is stopped, not created\\n\"\n  }\n  ...\nok 6 - attempting to `start` a container that is not `created` MUST have no effect on the container\n  ---\n  {\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#start\"\n  }\n  ...\nnot ok 7 - exit status 1\n1..7\n"
+  },
+  {
+   "test": "state",
+   "passed": 3,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.15,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  }
+ ]
+}

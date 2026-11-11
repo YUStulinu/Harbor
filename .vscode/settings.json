@@ -1,0 +1,8 @@
+{
+  "go.goroot": "",
+  "gopls": { "build.env": { "GOOS": "linux" } },
+  "rust-analyzer.linkedProjects": ["${workspaceFolder}/registry/Cargo.toml"],
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": ["tests"],
+  "files.exclude": { "registry/target": true, "web/node_modules": true }
+}

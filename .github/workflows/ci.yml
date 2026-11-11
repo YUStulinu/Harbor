@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  runtime:
+    name: Runtime (Go) + isolation tests + OCI validation
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+          cache-dependency-path: runtime/go.sum
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Vet, format and unit tests
+        working-directory: runtime
+        run: |
+          test -z "$(gofmt -l .)"
+          go vet ./...
+          go test ./...
+      - name: Build and install harbor and harbor-registry
+        run: |
+          (cd runtime && go build -o ../bin/harbor ./cmd/harbor)
+          cargo build --release --manifest-path registry/Cargo.toml
+          sudo install -m755 bin/harbor registry/target/release/harbor-registry /usr/local/bin/
+          sudo apt-get update && sudo apt-get install -y runc python3-pytest
+      - name: Pull images (Docker Hub)
+        run: |
+          for i in alpine:3.20 python:3.12-alpine; do sudo harbor-registry pull $i; done
+          sudo harbor-registry images
+      - name: Isolation tests (pid, memory, CPU, pids, filesystem, seccomp, user namespace, network)
+        run: sudo python3 -m pytest tests -q
+      - name: OCI runtime-tools validation (harbor and runc)
+        run: |
+          git clone -q https://github.com/opencontainers/runtime-tools.git /tmp/runtime-tools
+          (cd /tmp/runtime-tools && make runtimetest validation-executables > /dev/null)
+          sudo python3 bench/oci_conformance.py --runtime harbor --tools /tmp/runtime-tools --out ci-oci-harbor.json | tail -8
+          sudo python3 bench/oci_conformance.py --runtime runc --tools /tmp/runtime-tools --out ci-oci-runc.json | tail -8
+          python3 -c "import json; h=json.load(open('ci-oci-harbor.json'))['summary']; r=json.load(open('ci-oci-runc.json'))['summary']; print('harbor', h['programs_passed'], 'runc', r['programs_passed']); assert h['programs_passed'] >= r['programs_passed']"
+      - name: Start-up benchmark (short)
+        run: sudo python3 bench/startup.py -n 20 --image-runs 5 --reps 1
+
+  registry:
+    name: Registry and image puller (Rust)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - run: cargo test --release --manifest-path registry/Cargo.toml
+      - run: cargo clippy --release --manifest-path registry/Cargo.toml -- -D warnings
+      - name: Pull from Docker Hub, push to the local registry, pull it back
+        run: |
+          cargo build --release --manifest-path registry/Cargo.toml
+          R=registry/target/release/harbor-registry
+          $R --store /tmp/s1 pull alpine:3.20
+          ($R --store /tmp/s2 serve --addr 127.0.0.1:5000 &) ; sleep 1
+          $R --store /tmp/s1 push alpine:3.20 localhost:5000/mirror/alpine:3.20
+          $R --store /tmp/s3 pull localhost:5000/mirror/alpine:3.20
+          a=$($R --store /tmp/s1 images | cut -f2); b=$($R --store /tmp/s3 images | cut -f2)
+          echo "$a / $b"; test "$a" = "$b"
+
+  web:
+    name: UI (TypeScript)
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - run: npm test
+      - run: npm run build

@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.png binary
+results/*.json linguist-generated
+web/package-lock.json linguist-generated
+runtime/internal/seccomp/syscalls_amd64.go linguist-generated

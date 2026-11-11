@@ -1,0 +1,788 @@
+{
+ "summary": {
+  "runtime": "runc",
+  "programs": 58,
+  "programs_passed": 31,
+  "passed": 2528,
+  "failed": 81,
+  "skipped": 341,
+  "assertion_pass_rate": 96.9,
+  "program_pass_rate": 53.4
+ },
+ "tests": [
+  {
+   "test": "config_updates_without_affect",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.12,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "create",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.2,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "default",
+   "passed": 270,
+   "failed": 0,
+   "skipped": 39,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.21,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "delete",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 13.47,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "delete_only_create_resources",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.08,
+   "ok": false,
+   "failures": [],
+   "output_tail": "TAP version 13\nopen /sys/fs/cgroup/pids/cgrouptest/tasks: no such file or directory\n"
+  },
+  {
+   "test": "delete_resources",
+   "passed": 1,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.13,
+   "ok": false,
+   "failures": [
+    "find pids cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find pids cgroup\n# cgroupv2 is not supported yet\nok 2 - Deleting a container MUST delete the resources that were created during the `create` step\n  ---\n  {\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#delete\"\n  }\n  ...\n1..2\n"
+  },
+  {
+   "test": "hooks",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.12,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "hooks_stdin",
+   "passed": 1,
+   "failed": 2,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.14,
+   "ok": false,
+   "failures": [
+    "the state of the container MUST be passed to \"prestart\" hook over stdin",
+    "the state of the container MUST be passed to \"poststart\" hook over stdin"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - the state of the container MUST be passed to \"prestart\" hook over stdin\n  ---\n  {\n    \"error\": \"1 error occurred:\\n\\t* wrong status \\\"creating\\\" in the stdin of prestart hook, expected \\\"created\\\"\\n\\n\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/config.md#posix-platform-hooks\"\n  }\n  ...\nnot ok 2 - the state of the container MUST be passed to \"poststart\" hook over stdin\n  ---\n  {\n    \"error\": \"1 error occurred:\\n\\t* wrong status \\\"created\\\" in the stdin of poststart hook, expected \\\"running\\\"\\n\\n\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/config.md#posix-platform-hooks\"\n  }\n  ...\nok 3 - the state of the container MUST be passed to \"poststop\" hook over stdin\n  ---\n  {\n    \"error\": \"\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/config.md#posix-platform-hooks\"\n  }\n  ...\n1..3\n"
+  },
+  {
+   "test": "hostname",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.45,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "kill",
+   "passed": 5,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 10.41,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "kill_no_effect",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.15,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "killsig",
+   "passed": 3,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.29,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_cgroups_blkio",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.1,
+   "ok": false,
+   "failures": [],
+   "output_tail": "TAP version 13\n1..0\nfailed to create the container\ntime=\"2026-11-11T23:13:47+02:00\" level=error msg=\"runc create failed: unable to start container process: error during container init: error setting cgroup config for procHooks process: openat2 /sys/fs/cgroup/cgrouptest/io.weight: no such file or directory\"\nexit status 1\n"
+  },
+  {
+   "test": "linux_cgroups_cpus",
+   "passed": 0,
+   "failed": 16,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 3.48,
+   "ok": false,
+   "failures": [
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup",
+    "find cpu cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 2 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 3 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 4 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 5 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 6 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 7 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 8 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 9 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 10 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 11 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 12 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 13 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 14 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 15 - find cpu cgroup\n# cgroupv2 is not supported yet\nnot ok 16 - find cpu cgroup\n# cgroupv2 is not supported yet\n1..16\nTAP version 13\n1..0\n"
+  },
+  {
+   "test": "linux_cgroups_devices",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.2,
+   "ok": false,
+   "failures": [
+    "find devices"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find devices\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_hugetlb",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.21,
+   "ok": false,
+   "failures": [],
+   "output_tail": "TAP version 13\n1..0\ncgroupv2 is not supported yet\n"
+  },
+  {
+   "test": "linux_cgroups_memory",
+   "passed": 0,
+   "failed": 6,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.2,
+   "ok": false,
+   "failures": [
+    "find memory cgroup",
+    "find memory cgroup",
+    "find memory cgroup",
+    "find memory cgroup",
+    "find memory cgroup",
+    "find memory cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find memory cgroup\n# cgroupv2 is not supported yet\nnot ok 2 - find memory cgroup\n# cgroupv2 is not supported yet\nnot ok 3 - find memory cgroup\n# cgroupv2 is not supported yet\nnot ok 4 - find memory cgroup\n# cgroupv2 is not supported yet\nnot ok 5 - find memory cgroup\n# cgroupv2 is not supported yet\nnot ok 6 - find memory cgroup\n# cgroupv2 is not supported yet\n1..6\n"
+  },
+  {
+   "test": "linux_cgroups_network",
+   "passed": 0,
+   "failed": 32,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 6.48,
+   "ok": false,
+   "failures": [
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup",
+    "find network cgroup"
+   ],
+   "output_tail": " is not supported yet\nnot ok 10 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 11 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 12 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 13 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 14 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 15 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 16 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 17 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 18 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 19 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 20 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 21 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 22 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 23 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 24 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 25 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 26 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 27 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 28 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 29 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 30 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 31 - find network cgroup\n# cgroupv2 is not supported yet\nnot ok 32 - find network cgroup\n# cgroupv2 is not supported yet\n1..32\n"
+  },
+  {
+   "test": "linux_cgroups_pids",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.2,
+   "ok": false,
+   "failures": [
+    "find pids cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find pids cgroup\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_relative_blkio",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.07,
+   "ok": false,
+   "failures": [
+    "exit status 1"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - exit status 1\n1..1\nfailed to create the container\ntime=\"2026-11-11T23:13:59+02:00\" level=error msg=\"runc create failed: unable to start container process: error during container init: error setting cgroup config for procHooks process: openat2 /sys/fs/cgroup/testdir/cgrouptest/container/io.weight: no such file or directory\"\n"
+  },
+  {
+   "test": "linux_cgroups_relative_cpus",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.2,
+   "ok": false,
+   "failures": [
+    "find cpus cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find cpus cgroup\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_relative_devices",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.2,
+   "ok": false,
+   "failures": [
+    "find devices"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find devices\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_relative_hugetlb",
+   "passed": 0,
+   "failed": 2,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.41,
+   "ok": false,
+   "failures": [
+    "find hugetlb cgroup",
+    "find hugetlb cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find hugetlb cgroup\n# cgroupv2 is not supported yet\nnot ok 2 - find hugetlb cgroup\n# cgroupv2 is not supported yet\n1..2\n"
+  },
+  {
+   "test": "linux_cgroups_relative_memory",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.22,
+   "ok": false,
+   "failures": [
+    "find memory cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find memory cgroup\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_relative_network",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.21,
+   "ok": false,
+   "failures": [
+    "find network cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find network cgroup\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_cgroups_relative_pids",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.2,
+   "ok": false,
+   "failures": [
+    "find pids cgroup"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - find pids cgroup\n# cgroupv2 is not supported yet\n1..1\n"
+  },
+  {
+   "test": "linux_devices",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.08,
+   "ok": false,
+   "failures": [],
+   "output_tail": "failed to create the container\ntime=\"2026-11-11T23:14:01+02:00\" level=error msg=\"runc create failed: unable to start container process: error during container init: error creating device nodes: new p device inode /dev/test3 has incorrect major:minor: 0:0 doesn't match expected 8:666\"\nexit status 1\n"
+  },
+  {
+   "test": "linux_masked_paths",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.95,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_mount_label",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.09,
+   "ok": false,
+   "failures": [],
+   "output_tail": "failed to create the container\ntime=\"2026-11-11T23:14:02+02:00\" level=error msg=\"runc create failed: unable to start container process: error during container init: error mounting \\\"tmpfs\\\" to rootfs at \\\"/dev\\\": mount src=tmpfs, dst=/dev, dstFd=/proc/thread-self/fd/11, flags=MS_NOSUID|MS_STRICTATIME, data=mode=0755,mode=755,size=65536k,context=\\\"system_u:object_r:svirt_sandbox_file_t:s0:c715,c811\\\": invalid argument\"\nexit status 1\n"
+  },
+  {
+   "test": "linux_ns_itype",
+   "passed": 7,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.29,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_ns_nopath",
+   "passed": 7,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.2,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_ns_path",
+   "passed": 5,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 2.05,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_ns_path_type",
+   "passed": 14,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.49,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_process_apparmor_profile",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.08,
+   "ok": false,
+   "failures": [],
+   "output_tail": "failed to create the container\ntime=\"2026-11-11T23:14:05+02:00\" level=error msg=\"runc create failed: unable to start container process: error during container init: unable to apply apparmor profile: apparmor failed to apply profile: write fsmount:fscontext:proc/thread-self/attr/apparmor/exec: invalid argument\"\nexit status 1\n"
+  },
+  {
+   "test": "linux_readonly_paths",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.86,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_rootfs_propagation",
+   "passed": 4,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 4.84,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_seccomp",
+   "passed": 0,
+   "failed": 2,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.1,
+   "ok": false,
+   "failures": [
+    "seccomp action is added correctly",
+    "exit status 1"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - seccomp action is added correctly\nnot ok 2 - exit status 1\n1..2\nfailed to create the container\ntime=\"2026-11-11T23:14:11+02:00\" level=error msg=\"runc create failed: unable to start container process: error during container init: failed to verify if current working directory is safe: operation not permitted\"\n"
+  },
+  {
+   "test": "linux_sysctl",
+   "passed": 271,
+   "failed": 0,
+   "skipped": 38,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.23,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "linux_uid_mappings",
+   "passed": 274,
+   "failed": 0,
+   "skipped": 38,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.21,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "misc_props",
+   "passed": 2,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.22,
+   "ok": false,
+   "failures": [
+    "implementations that are reading/processing this configuration file MUST NOT generate an error if they encounter an unknown annotation key"
+   ],
+   "output_tail": "    \"stderr\": \"time=\\\"2026-11-11T23:14:11+02:00\\\" level=error msg=\\\"runc create failed: unable to start container process: error during container init: exec: \\\\\\\"/runtimetest\\\\\\\": stat /runtimetest: no such file or directory\\\"\\n\"\n  }\n  ...\nok 2 - runtimes that are reading or processing this configuration file MUST NOT generate an error if they encounter an unknown property\n  ---\n  {\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/config.md#extensibility\"\n  }\n  ...\nok 3 - runtimes that are reading or processing this configuration file MUST generate an error when invalid or unsupported values are encountered\n  ---\n  {\n    \"error\": \"exit status 1\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/config.md#valid-values\",\n    \"stderr\": \"time=\\\"2026-11-11T23:14:11+02:00\\\" level=error msg=\\\"runc create failed: unable to start container process: error during container init: exec: \\\\\\\"/runtimetest\\\\\\\": stat /runtimetest: no such file or directory\\\"\\n\"\n  }\n  ...\n1..3\nfailed to create the container\ntime=\"2026-11-11T23:14:11+02:00\" level=error msg=\"runc create failed: unable to start container process: error during container init: exec: \\\"/runtimetest\\\": stat /runtimetest: no such file or directory\"\nfailed to create the container\ntime=\"2026-11-11T23:14:11+02:00\" level=error msg=\"runc create failed: unable to start container process: error during container init: exec: \\\"/runtimetest\\\": stat /runtimetest: no such file or directory\"\n"
+  },
+  {
+   "test": "mounts",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.05,
+   "ok": false,
+   "failures": [],
+   "output_tail": "failed to create the container\ntime=\"2026-11-11T23:14:12+02:00\" level=error msg=\"runc create failed: invalid mount &{Source:/etc Destination:/mnt/etc-shared Device:bind Flags:16781314 ClearedFlags:0 PropagationFlags:[1048576] Data:mode=755,size=1k Relabel: RecAttr:<nil> Extensions:0 IDMapping:<nil>}: bind mounts cannot have any filesystem-specific options applied\"\nexit status 1\n"
+  },
+  {
+   "test": "pidfile",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 10.23,
+   "ok": false,
+   "failures": [
+    "create with '--pid-file' option works"
+   ],
+   "output_tail": "TAP version 13\nnot ok 1 - create with '--pid-file' option works\n  ---\n  {\n    \"error\": \"exit status 1\",\n    \"stderr\": \"time=\\\"2026-11-11T23:14:22+02:00\\\" level=error msg=\\\"container not running\\\"\\n\"\n  }\n  ...\n1..1\n"
+  },
+  {
+   "test": "poststart",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.13,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "poststart_fail",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.11,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "poststop",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.13,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "poststop_fail",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.14,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "prestart",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.12,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "prestart_fail",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.09,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "process",
+   "passed": 272,
+   "failed": 0,
+   "skipped": 39,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.24,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "process_capabilities",
+   "passed": 270,
+   "failed": 0,
+   "skipped": 32,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.21,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "process_capabilities_fail",
+   "passed": 270,
+   "failed": 1,
+   "skipped": 39,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.2,
+   "ok": false,
+   "failures": [],
+   "output_tail": "(default device) has an unconfigured group ID\nok 288 # SKIP linux.devices is not set\nok 289 - has expected number of process arguments\n  ---\n  {\n    \"actual\": [\n      \"L3J1bnRpbWV0ZXN0\",\n      \"LS1wYXRoPS8=\"\n    ],\n    \"expected\": [\n      \"/runtimetest\",\n      \"--path=/\"\n    ]\n  }\n  ...\nok 290 - has expected process argument 0\n  ---\n  {\n    \"actual\": \"/runtimetest\",\n    \"expected\": \"/runtimetest\",\n    \"index\": 0\n  }\n  ...\nok 291 - has expected process argument 1\n  ---\n  {\n    \"actual\": \"--path=/\",\n    \"expected\": \"--path=/\",\n    \"index\": 1\n  }\n  ...\nok 292 - has expected noNewPrivileges\nok 293 # SKIP linux.maskedPaths not set\nok 294 # SKIP process.oomScoreAdj not set\nok 295 # SKIP syscall action SCMP_ACT_ALLOW\nok 296 # SKIP syscall action SCMP_ACT_ALLOW\nok 297 # SKIP syscall action SCMP_ACT_ALLOW\nok 298 # SKIP syscall action SCMP_ACT_ALLOW\nok 299 # SKIP syscall action SCMP_ACT_ALLOW\nok 300 # SKIP syscall action SCMP_ACT_ALLOW\nok 301 # SKIP syscall action SCMP_ACT_ALLOW\nok 302 # SKIP syscall action SCMP_ACT_ALLOW\nok 303 # SKIP linux.readonlyPaths not set\nok 304 # SKIP linux.rootfsPropagation not set\nok 305 # SKIP linux.sysctl not set\nok 306 # SKIP linux.uidMappings not set\nok 307 # SKIP linux.gidMappings not set\nok 308 # SKIP linux.mountlabel not set\nok 309 # SKIP process.ApparmorProfile not set\n1..309\nAny value which cannot be mapped to a relevant kernel interface MUST cause an error\nRefer to: https://github.com/opencontainers/runtime-spec/blob/v1.3.0/config.md#linux-process\n"
+  },
+  {
+   "test": "process_oom_score_adj",
+   "passed": 271,
+   "failed": 0,
+   "skipped": 38,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.19,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "process_rlimits",
+   "passed": 0,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 1,
+   "timed_out": false,
+   "seconds": 0.08,
+   "ok": false,
+   "failures": [],
+   "output_tail": "failed to create the container\ntime=\"2026-11-11T23:14:23+02:00\" level=error msg=\"runc create failed: unable to start container process: error during container init: error adding seccomp filter rule for syscall getegid32: cannot allocate memory\"\nexit status 1\n"
+  },
+  {
+   "test": "process_rlimits_fail",
+   "passed": 1,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.05,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "process_user",
+   "passed": 271,
+   "failed": 0,
+   "skipped": 39,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 1.21,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "root_readonly_true",
+   "passed": 271,
+   "failed": 0,
+   "skipped": 39,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.21,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  },
+  {
+   "test": "start",
+   "passed": 6,
+   "failed": 1,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.12,
+   "ok": false,
+   "failures": [
+    "exit status 1"
+   ],
+   "output_tail": "02:00\\\" level=error msg=\\\"/usr/sbin/runc: \\\\\\\"start\\\\\\\" requires exactly 1 argument(s)\\\"\\n\"\n  }\n  ...\nok 2 - attempting to `start` a container that is not `created` MUST generate an error\n  ---\n  {\n    \"error\": \"exit status 1\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#start\",\n    \"stderr\": \"time=\\\"2026-11-11T23:14:25+02:00\\\" level=error msg=\\\"container does not exist\\\"\\n\"\n  }\n  ...\nok 3 - `process.args` MUST NOT be applied until triggered by the start operation\n  ---\n  {\n    \"error\": \"stat /tmp/ocitest699994123/output: no such file or directory\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#create\"\n  }\n  ...\nok 4 - `start` operation MUST run the user-specified program as specified by `process`\n  ---\n  {\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#start\"\n  }\n  ...\nok 5 - attempting to `start` a container that is not `created` MUST generate an error\n  ---\n  {\n    \"error\": \"exit status 1\",\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#start\",\n    \"stderr\": \"time=\\\"2026-11-11T23:14:25+02:00\\\" level=error msg=\\\"cannot start a container that has stopped\\\"\\n\"\n  }\n  ...\nok 6 - attempting to `start` a container that is not `created` MUST have no effect on the container\n  ---\n  {\n    \"reference\": \"https://github.com/opencontainers/runtime-spec/blob/v1.3.0/runtime.md#start\"\n  }\n  ...\nnot ok 7 - exit status 1\n1..7\n"
+  },
+  {
+   "test": "state",
+   "passed": 3,
+   "failed": 0,
+   "skipped": 0,
+   "exit_code": 0,
+   "timed_out": false,
+   "seconds": 0.21,
+   "ok": true,
+   "failures": [],
+   "output_tail": ""
+  }
+ ]
+}
