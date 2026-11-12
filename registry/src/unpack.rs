@@ -97,12 +97,15 @@ pub fn unpack_layer(blob: impl Read, media_type: &str, dest: &Path) -> io::Resul
 
 pub fn unpack_tar(r: impl Read, dest: &Path) -> io::Result<Unpacked> {
     let mut ar = tar::Archive::new(r);
-    // SAFETY-relevant settings: ownership and xattrs are kept (the image says who owns what);
-    // tar's unpack_in refuses paths that would leave `dest`.
+    // Ownership and xattrs are kept when we can (the image says who owns what): only root may
+    // chown to other users or set trusted.* attributes, so an unprivileged pull keeps its own
+    // uid. tar's unpack_in refuses paths that would leave `dest`.
+    // SAFETY: geteuid has no preconditions.
+    let root = unsafe { libc::geteuid() } == 0;
     ar.set_preserve_permissions(true);
-    ar.set_preserve_ownerships(true);
+    ar.set_preserve_ownerships(root);
     ar.set_preserve_mtime(true);
-    ar.set_unpack_xattrs(true);
+    ar.set_unpack_xattrs(root);
     ar.set_overwrite(true);
     let mut stats = Unpacked::default();
     for e in ar.entries()? {
