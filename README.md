@@ -32,6 +32,10 @@ It needs a Linux kernel and root. Everything here was developed and measured in 
 | CPU-bound job inside a container vs the same binaries outside | 4,510 ms vs 4,517 ms | 4,605 ms |
 | isolation tests (pid, memory, CPU, pids, filesystem, privileges, network) | 13 / 13 | – |
 
+The CI repeats the whole evaluation on a GitHub Ubuntu 24.04 machine (4 CPUs, cgroup v2), and
+the results agree: 38 against 31 programs passed, all 13 isolation tests pass, and start-up is
+8.8 ms against 17.7 ms in a short 20-run benchmark.
+
 The 20 programs Harbor fails, runc fails too:
 
 - **16 programs are cgroup tests.** runtime-tools still reads cgroup v1 paths and prints
